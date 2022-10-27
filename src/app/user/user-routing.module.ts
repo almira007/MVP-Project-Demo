@@ -1,8 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserFormContainerComponent } from './user-form-container/user-form-container.component';
+import { UserListContainerComponent } from './user-list-container/user-list-container.component';
 import { UserComponent } from './user.component';
 
-const routes: Routes = [{ path: '', component: UserComponent }];
+const routes: Routes = [
+  { 
+    path: '', 
+    component: UserComponent,
+    children:[
+      {
+        path:'form-container',
+        component:UserFormContainerComponent
+      },
+      {
+        path:'list-container',
+        component:UserListContainerComponent
+      }
+    ] 
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
